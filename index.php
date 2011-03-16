@@ -1,11 +1,11 @@
 <?php
 
-	$data = json_encode($_POST);
-	
-	$mongo = new Mongo();
+// Include the necessary classes.
+require_once('classes/datastore.php');
+require_once('classes/api.php');
+require_once('classes/page.php');
 
-	$db = $mongo->selectDB('geigercrowd');
-
-	$db->datapoints->insert( $data );
+$page = new Page();
+$page->demo();
 
 ?>

@@ -1,6 +1,12 @@
 <?php
 
-class datastore {
+class Datastore {
+
+	private static $db;
+
+	private __construct() {
+		$this->db = new Mongo();
+	}
 
 }
 
