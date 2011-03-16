@@ -1,0 +1,29 @@
+# Add to Apache Config
+#    Alias /heatmap/ /this/directory/
+#    Alias /mapcache/ /var/cache/heatmap/
+
+# Make cache directory
+# mkdir /var/cache/heatmap
+# chown www-data /var/cache/heatmap
+# chmod 2775 /var/cache/heatmap
+
+Addhandler cgi-script .py
+Options +ExecCGI
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /heatmap
+
+# Serve up file if already cached
+RewriteCond /var/cache%{REQUEST_URI} -f
+RewriteRule ^(.+) /mapcache/$1 [L]
+
+# Generate file
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+) gheatcgi.py [L]
+</IfModule>
