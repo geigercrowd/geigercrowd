@@ -6,6 +6,10 @@ class Page {
 		echo 'Hello, geigercrowd.';
 	}
 
+	public static function route() {
+
+	}
+
 }
 
 ?>
